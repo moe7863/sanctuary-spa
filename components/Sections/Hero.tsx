@@ -135,10 +135,10 @@ export const Hero: React.FC = () => {
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
               >
-                <option value="1">1 Adult</option>
-                <option value="2">2 Adults</option>
-                <option value="3">3 Adults</option>
-                <option value="4">4 Adults</option>
+                <option value="1" className="bg-zinc-900 text-white">1 Adult</option>
+                <option value="2" className="bg-zinc-900 text-white">2 Adults</option>
+                <option value="3" className="bg-zinc-900 text-white">3 Adults</option>
+                <option value="4" className="bg-zinc-900 text-white">4 Adults</option>
               </select>
             </div>
 
