@@ -1,6 +1,18 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || '';
+// Safely access environment variables to prevent crashes in browser environments where 'process' is undefined
+const getApiKey = () => {
+  try {
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.API_KEY || '';
+    }
+  } catch (e) {
+    // Ignore error if process is not defined
+  }
+  return '';
+};
+
+const apiKey = getApiKey();
 const ai = new GoogleGenAI({ apiKey });
 
 const SYSTEM_INSTRUCTION = `
@@ -20,7 +32,8 @@ Answer questions briefly and helpful. If asked about booking, encourage them to 
 export const sendMessageToConcierge = async (message: string, history: {role: string, parts: {text: string}[]}[] = []): Promise<string> => {
   try {
     if (!apiKey) {
-      return "I'm sorry, I cannot connect to the concierge service at the moment (API Key missing).";
+      console.warn("API Key is missing. Please check your .env configuration.");
+      return "I'm sorry, I cannot connect to the concierge service at the moment (Configuration Error).";
     }
 
     const model = 'gemini-3-flash-preview'; 
