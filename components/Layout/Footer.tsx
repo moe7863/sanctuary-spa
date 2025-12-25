@@ -89,8 +89,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 text-xs text-zinc-500">
-          <p>© 2024 Sanctuary B&B. All rights reserved.</p>
-          <div className="flex gap-8 mt-4 md:mt-0">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mb-4 md:mb-0">
+            <p>© 2025 Sanctuary B&B. All rights reserved.</p>
+            <span className="hidden md:block text-zinc-700">|</span>
+            <p className="text-zinc-600">Designed by Geometric Digital</p>
+          </div>
+          <div className="flex gap-8">
             <button onClick={() => onNavigate('privacy')} className="hover:text-white transition-colors">Privacy</button>
             <button onClick={() => onNavigate('terms')} className="hover:text-white transition-colors">Terms</button>
             <a href="#" className="hover:text-white transition-colors">Sitemap</a>

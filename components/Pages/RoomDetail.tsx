@@ -163,17 +163,11 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
 
       {/* Gallery Lightbox */}
       {galleryIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center animate-in fade-in duration-300">
-          <button 
-            className="absolute top-6 right-6 text-zinc-400 hover:text-white p-2"
-            onClick={() => setGalleryIndex(null)}
-          >
-            <X className="w-8 h-8" />
-          </button>
+        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center animate-in fade-in duration-300">
           
           <button 
-            className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors p-4"
-            onClick={() => setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1))}
+            className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors p-4 z-50"
+            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1)); }}
           >
             <ChevronLeft className="w-10 h-10" />
           </button>
@@ -181,19 +175,28 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
           <img 
             src={allImages[galleryIndex]} 
             alt="Gallery view" 
-            className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm shadow-2xl"
+            className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm shadow-2xl relative z-10"
+            onClick={(e) => e.stopPropagation()} 
           />
 
           <button 
-            className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors p-4"
-            onClick={() => setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0))}
+            className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors p-4 z-50"
+            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0)); }}
           >
             <ChevronRight className="w-10 h-10" />
           </button>
           
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50">
             {galleryIndex + 1} / {allImages.length}
           </div>
+
+          {/* Close button moved to end and given high z-index */}
+          <button 
+            className="absolute top-6 right-6 text-zinc-400 hover:text-white p-2 z-[60]"
+            onClick={(e) => { e.stopPropagation(); setGalleryIndex(null); }}
+          >
+            <X className="w-8 h-8" />
+          </button>
         </div>
       )}
 

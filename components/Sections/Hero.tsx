@@ -51,7 +51,7 @@ export const Hero: React.FC = () => {
         <FadeIn delay={0}>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-black/40 backdrop-blur text-xs font-medium text-zinc-300 mb-8 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            Now accepting reservations for Winter 2024
+            Now accepting reservations for Winter 2025
           </div>
         </FadeIn>
         
