@@ -2,8 +2,10 @@ export interface Room {
   id: string;
   name: string;
   description: string;
+  longDescription?: string;
   price: number;
   image: string;
+  images?: string[];
   guests: number;
   size: string;
   amenities: string[];
@@ -25,3 +27,14 @@ export interface ChatMessage {
   text: string;
   timestamp: number;
 }
+
+export type PageView = 
+  | 'home' 
+  | 'room-detail' 
+  | 'our-story' 
+  | 'dining' 
+  | 'activities' 
+  | 'faq' 
+  | 'terms' 
+  | 'privacy' 
+  | 'contact';
