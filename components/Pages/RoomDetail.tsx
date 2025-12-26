@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowLeft, Wifi, Coffee, Bath, Sun, Utensils, Monitor, Check, X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { Room } from '../../types';
 import { FadeIn } from '../UI/FadeIn';
@@ -161,62 +162,69 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
         </div>
       </div>
 
-      {/* Gallery Lightbox */}
-      {galleryIndex !== null && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center animate-in fade-in duration-300"
-          onClick={() => setGalleryIndex(null)}
-        >
+      {/* Gallery Lightbox - PORTAL */}
+      {galleryIndex !== null && createPortal(
+        <div className="fixed inset-0 z-[9999] bg-black/98 flex flex-col items-center justify-center animate-in fade-in duration-300">
           
+          {/* Close Button */}
           <button 
-            className="absolute left-0 md:left-8 text-white/50 hover:text-white transition-colors p-6 z-50 flex items-center justify-center"
-            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1)); }}
+            type="button"
+            className="fixed top-6 right-6 z-[10000] p-4 text-white/70 hover:text-white bg-black/20 hover:bg-white/10 rounded-full backdrop-blur-md transition-all cursor-pointer border border-white/5 hover:border-white/20"
+            onClick={(e) => {
+              e.preventDefault();
+              setGalleryIndex(null);
+            }}
+            aria-label="Close gallery"
+          >
+            <X className="w-8 h-8 pointer-events-none" />
+          </button>
+
+          {/* Navigation - Left */}
+          <button 
+            className="fixed left-4 top-1/2 -translate-y-1/2 z-[10000] p-4 text-white/50 hover:text-white transition-colors cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1));
+            }}
           >
             <ChevronLeft className="w-10 h-10 drop-shadow-lg" />
           </button>
 
-          {/* Image Container */}
-          <div className="w-full h-full flex items-center justify-center p-0 md:p-12 pointer-events-none">
-            <img 
-              src={allImages[galleryIndex]} 
-              alt="Gallery view" 
-              className="w-full h-auto max-h-[80vh] md:w-auto md:max-w-[90vw] md:max-h-[85vh] object-contain rounded-sm shadow-2xl relative z-10 select-none pointer-events-auto"
-              onClick={(e) => e.stopPropagation()} 
-            />
-          </div>
-
+          {/* Navigation - Right */}
           <button 
-            className="absolute right-0 md:right-8 text-white/50 hover:text-white transition-colors p-6 z-50 flex items-center justify-center"
-            onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0)); }}
+            className="fixed right-4 top-1/2 -translate-y-1/2 z-[10000] p-4 text-white/50 hover:text-white transition-colors cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0));
+            }}
           >
             <ChevronRight className="w-10 h-10 drop-shadow-lg" />
           </button>
-          
-          <div 
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {galleryIndex + 1} / {allImages.length}
+
+          {/* Counter */}
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[10000] text-zinc-400 text-sm tracking-widest bg-black/50 px-6 py-2 rounded-full backdrop-blur-md border border-white/5 pointer-events-none select-none">
+            {galleryIndex + 1} <span className="text-zinc-600 mx-2">/</span> {allImages.length}
           </div>
 
-          {/* Close button - Fixed z-index and positioning */}
-          <button 
-            type="button"
-            className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-zinc-300 p-3 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-md transition-all cursor-pointer shadow-lg border border-white/10"
-            onClick={(e) => { 
-              e.preventDefault();
-              e.stopPropagation(); 
-              setGalleryIndex(null); 
-            }}
+          {/* Image Container (Backdrop click closes) */}
+          <div 
+            className="w-full h-full flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+            onClick={() => setGalleryIndex(null)}
           >
-            <X className="w-6 h-6 md:w-8 md:h-8 pointer-events-none" />
-          </button>
-        </div>
+            <img 
+              src={allImages[galleryIndex]} 
+              alt="Gallery view" 
+              className="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-sm cursor-default select-none animate-in zoom-in-95 duration-300"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+        </div>,
+        document.body
       )}
 
-      {/* Booking Modal */}
-      {isBookingOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200">
+      {/* Booking Modal - PORTAL */}
+      {isBookingOpen && createPortal(
+        <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200">
           <div className="bg-zinc-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-zinc-950 sticky top-0 z-10">
@@ -327,7 +335,8 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
