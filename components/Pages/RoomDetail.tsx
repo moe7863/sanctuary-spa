@@ -94,7 +94,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                   >
                     <img src={img} alt="Room detail" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="text-white text-xs font-medium tracking-wider uppercase bg-black/50 px-3 py-1 rounded-full">View</span>
+                      <span className="text-white text-xs font-medium tracking-wider uppercase bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10">View</span>
                     </div>
                   </div>
                 ))}
@@ -105,7 +105,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
           {/* Details */}
           <div>
             <FadeIn>
-              <div className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-zinc-300 mb-6">
+              <div className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-medium text-zinc-300 mb-6">
                 {room.size} · Sleeps {room.guests}
               </div>
               <h1 className="text-4xl md:text-5xl font-serif text-white mb-6">{room.name}</h1>
@@ -116,20 +116,20 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                 <div className="grid grid-cols-2 gap-4">
                   {room.amenities.map((amenity) => (
                     <div key={amenity} className="flex items-center gap-3 text-zinc-400">
-                      <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-300 border border-white/5">
+                      <div className="w-8 h-8 rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center text-zinc-300 border border-white/5">
                         {getIcon(amenity)}
                       </div>
                       <span>{amenity}</span>
                     </div>
                   ))}
                   <div className="flex items-center gap-3 text-zinc-400">
-                     <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-300 border border-white/5">
+                     <div className="w-8 h-8 rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center text-zinc-300 border border-white/5">
                         <Check className="w-4 h-4" />
                      </div>
                      <span>Aesop Toiletries</span>
                   </div>
                    <div className="flex items-center gap-3 text-zinc-400">
-                     <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-300 border border-white/5">
+                     <div className="w-8 h-8 rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center text-zinc-300 border border-white/5">
                         <Check className="w-4 h-4" />
                      </div>
                      <span>Egyptian Cotton Sheets</span>
@@ -137,7 +137,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                 </div>
               </div>
 
-              <div className="bg-zinc-900 rounded-2xl p-6 border border-white/5">
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-2xl">
                 <div className="flex justify-between items-center mb-6">
                   <div>
                     <span className="text-3xl font-semibold text-white">£{room.price}</span>
@@ -225,9 +225,9 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
       {/* Booking Modal - PORTAL */}
       {isBookingOpen && createPortal(
         <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200">
-          <div className="bg-zinc-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
+          <div className="bg-zinc-900/90 backdrop-blur-xl w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
-            <div className="p-6 border-b border-white/5 flex justify-between items-center bg-zinc-950 sticky top-0 z-10">
+            <div className="p-6 border-b border-white/5 flex justify-between items-center bg-white/5 backdrop-blur-md sticky top-0 z-10">
               <h3 className="text-xl font-serif text-white">Complete Reservation</h3>
               <button onClick={() => setIsBookingOpen(false)} className="text-zinc-500 hover:text-white">
                 <X className="w-5 h-5" />
@@ -254,7 +254,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                           required
                           value={checkIn}
                           onChange={(e) => setCheckIn(e.target.value)}
-                          className="w-full bg-zinc-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30"
+                          className="w-full bg-zinc-950/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30 backdrop-blur-sm"
                         />
                       </div>
                     </div>
@@ -266,7 +266,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                           required
                           value={checkOut}
                           onChange={(e) => setCheckOut(e.target.value)}
-                          className="w-full bg-zinc-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30"
+                          className="w-full bg-zinc-950/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30 backdrop-blur-sm"
                         />
                       </div>
                     </div>
@@ -280,7 +280,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="John Doe"
-                        className="w-full bg-zinc-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30"
+                        className="w-full bg-zinc-950/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30 backdrop-blur-sm"
                       />
                   </div>
 
@@ -292,7 +292,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="john@example.com"
-                        className="w-full bg-zinc-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30"
+                        className="w-full bg-zinc-950/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/30 backdrop-blur-sm"
                       />
                   </div>
 
@@ -328,7 +328,7 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
                 </p>
                 <button 
                   onClick={() => { setIsBookingOpen(false); setBookingStep('form'); onBack(); }}
-                  className="bg-zinc-800 text-white px-8 py-3 rounded-xl hover:bg-zinc-700 transition-colors border border-white/5"
+                  className="bg-white/10 text-white px-8 py-3 rounded-xl hover:bg-white/20 transition-colors border border-white/5 backdrop-blur-md"
                 >
                   Return to Home
                 </button>

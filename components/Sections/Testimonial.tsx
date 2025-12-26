@@ -86,24 +86,24 @@ export const Testimonial: React.FC<TestimonialProps> = ({ onSelectJournal }) => 
           {journalEntries.map((entry, idx) => (
             <FadeIn key={idx} delay={idx * 100}>
               <div 
-                className="group cursor-pointer"
+                className="group cursor-pointer rounded-3xl p-4 transition-all duration-300 hover:bg-white/5 hover:backdrop-blur-sm border border-transparent hover:border-white/5"
                 onClick={() => onSelectJournal(entry.id)}
               >
-                <div className="aspect-[3/2] rounded-2xl overflow-hidden mb-6 relative">
+                <div className="aspect-[3/2] rounded-2xl overflow-hidden mb-6 relative shadow-md group-hover:shadow-xl transition-shadow">
                    <img 
                     src={entry.image} 
                     alt={entry.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
                     loading="lazy"
                   />
-                  <div className="absolute top-4 left-4 bg-zinc-950/80 backdrop-blur-md px-3 py-1 rounded-md border border-white/10 flex items-center gap-2 text-[10px] font-medium text-zinc-300">
+                  <div className="absolute top-4 left-4 bg-zinc-950/60 backdrop-blur-md px-3 py-1 rounded-md border border-white/10 flex items-center gap-2 text-[10px] font-medium text-zinc-300">
                     <Calendar className="w-3 h-3" />
                     {entry.date}
                   </div>
                 </div>
-                <h3 className="text-xl font-serif text-white mb-2 group-hover:text-emerald-400 transition-colors">{entry.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">{entry.excerpt}</p>
-                <div className="text-xs font-medium text-white uppercase tracking-wider flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                <h3 className="text-xl font-serif text-white mb-2 group-hover:text-emerald-400 transition-colors px-2">{entry.title}</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed mb-4 px-2">{entry.excerpt}</p>
+                <div className="text-xs font-medium text-white uppercase tracking-wider flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 px-2">
                   Read Article <ArrowRight className="w-3 h-3" />
                 </div>
               </div>

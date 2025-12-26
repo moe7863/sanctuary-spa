@@ -4,8 +4,11 @@ import { FadeIn } from '../UI/FadeIn';
 
 export const Amenities: React.FC = () => {
   return (
-    <section id="amenities" className="py-24 px-6 border-y border-white/5 bg-zinc-950">
-      <div className="max-w-6xl mx-auto">
+    <section id="amenities" className="py-24 px-6 border-y border-white/5 bg-zinc-950 relative overflow-hidden">
+       {/* Ambient background glow */}
+       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-900/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <FadeIn>
           <div className="max-w-xl mb-16">
             <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Curated Amenities</h2>
@@ -17,7 +20,7 @@ export const Amenities: React.FC = () => {
           
           {/* Large Feature - Farm to Table */}
           <FadeIn className="md:col-span-2 md:row-span-2 h-[400px] md:h-auto" delay={100}>
-            <div className="w-full h-full bg-zinc-900 rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 transition-all duration-500">
+            <div className="w-full h-full bg-white/5 backdrop-blur-sm rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500">
               <img 
                 src="/images/amenity-farm.jpg" 
                 className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700 z-0 scale-110 group-hover:scale-100" 
@@ -37,8 +40,8 @@ export const Amenities: React.FC = () => {
                 <h3 className="text-2xl font-semibold text-white mb-3">Farm to Table</h3>
                 <p className="text-zinc-400 mb-8 max-w-sm group-hover:text-zinc-200 transition-colors">Seasonal breakfast included with every stay, featuring ingredients from our organic garden and local partners.</p>
                 <div className="flex gap-2">
-                  <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 shadow-sm">Organic</span>
-                  <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-zinc-300 shadow-sm">Local</span>
+                  <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/10 text-zinc-300 shadow-sm">Organic</span>
+                  <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/10 text-zinc-300 shadow-sm">Local</span>
                 </div>
               </div>
             </div>
@@ -46,7 +49,7 @@ export const Amenities: React.FC = () => {
 
           {/* Medium Feature - Spa */}
           <FadeIn className="md:col-span-2 h-[300px] md:h-auto" delay={200}>
-            <div className="w-full h-full bg-zinc-900 text-white rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 transition-all duration-500">
+            <div className="w-full h-full bg-white/5 backdrop-blur-sm text-white rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all duration-500">
               <img 
                 src="/images/amenity-spa.jpg" 
                 className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" 
@@ -69,7 +72,7 @@ export const Amenities: React.FC = () => {
 
           {/* Small Feature 1 */}
           <FadeIn className="h-[250px] md:h-auto" delay={300}>
-            <div className="w-full h-full bg-zinc-900 rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/10 hover:shadow-lg transition-all duration-300 group">
+            <div className="w-full h-full bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/20 hover:bg-white/10 hover:shadow-lg transition-all duration-300 group">
               <div className="flex justify-between items-start">
                 <Bike className="w-8 h-8 text-white mb-4" strokeWidth={1.5} />
                 <Map className="w-5 h-5 text-zinc-600 group-hover:text-emerald-500 transition-colors" strokeWidth={1.5} />
@@ -83,7 +86,7 @@ export const Amenities: React.FC = () => {
 
           {/* Small Feature 2 */}
           <FadeIn className="h-[250px] md:h-auto" delay={400}>
-            <div className="w-full h-full bg-zinc-900 rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/10 hover:shadow-lg transition-all duration-300 group">
+            <div className="w-full h-full bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/5 flex flex-col justify-between hover:border-white/20 hover:bg-white/10 hover:shadow-lg transition-all duration-300 group">
               <div className="flex justify-between items-start">
                 <Wifi className="w-8 h-8 text-white mb-4" strokeWidth={1.5} />
                 <Zap className="w-5 h-5 text-zinc-600 group-hover:text-yellow-500 transition-colors" strokeWidth={1.5} />
