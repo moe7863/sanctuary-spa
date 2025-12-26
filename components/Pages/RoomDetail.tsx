@@ -202,14 +202,14 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
           {/* Close button - Fixed z-index and positioning */}
           <button 
             type="button"
-            className="fixed top-4 right-4 md:top-8 md:right-8 text-white hover:text-zinc-300 p-3 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-md transition-all cursor-pointer shadow-lg border border-white/10"
+            className="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-zinc-300 p-3 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-md transition-all cursor-pointer shadow-lg border border-white/10"
             onClick={(e) => { 
               e.preventDefault();
               e.stopPropagation(); 
               setGalleryIndex(null); 
             }}
           >
-            <X className="w-6 h-6 md:w-8 md:h-8" />
+            <X className="w-6 h-6 md:w-8 md:h-8 pointer-events-none" />
           </button>
         </div>
       )}
