@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Wifi, Coffee, Bath, Sun, Utensils, Monitor, Check, X, ChevronLeft, ChevronRight, Calendar, Users, Loader2 } from 'lucide-react';
+import { ArrowLeft, Wifi, Coffee, Bath, Sun, Utensils, Monitor, Check, X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { Room } from '../../types';
 import { FadeIn } from '../UI/FadeIn';
 
@@ -163,38 +163,46 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
 
       {/* Gallery Lightbox */}
       {galleryIndex !== null && (
-        <div className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center animate-in fade-in duration-300">
+        <div 
+          className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center animate-in fade-in duration-300"
+          onClick={() => setGalleryIndex(null)}
+        >
           
           <button 
-            className="absolute left-0 md:left-8 text-white/50 hover:text-white transition-colors p-6 z-50 h-full flex items-center justify-center"
+            className="absolute left-0 md:left-8 text-white/50 hover:text-white transition-colors p-6 z-50 flex items-center justify-center"
             onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1)); }}
           >
             <ChevronLeft className="w-10 h-10 drop-shadow-lg" />
           </button>
 
-          <div className="w-full h-full flex items-center justify-center p-0 md:p-12">
+          {/* Image Container */}
+          <div className="w-full h-full flex items-center justify-center p-0 md:p-12 pointer-events-none">
             <img 
               src={allImages[galleryIndex]} 
               alt="Gallery view" 
-              className="w-full md:w-auto md:max-w-[90vw] md:max-h-[85vh] h-auto object-contain rounded-sm shadow-2xl relative z-10 select-none"
+              className="w-full h-auto max-h-[80vh] md:w-auto md:max-w-[90vw] md:max-h-[85vh] object-contain rounded-sm shadow-2xl relative z-10 select-none pointer-events-auto"
               onClick={(e) => e.stopPropagation()} 
             />
           </div>
 
           <button 
-            className="absolute right-0 md:right-8 text-white/50 hover:text-white transition-colors p-6 z-50 h-full flex items-center justify-center"
+            className="absolute right-0 md:right-8 text-white/50 hover:text-white transition-colors p-6 z-50 flex items-center justify-center"
             onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0)); }}
           >
             <ChevronRight className="w-10 h-10 drop-shadow-lg" />
           </button>
           
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
+          <div 
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md"
+            onClick={(e) => e.stopPropagation()}
+          >
             {galleryIndex + 1} / {allImages.length}
           </div>
 
           {/* Close button - Fixed z-index and positioning */}
           <button 
-            className="absolute top-4 right-4 md:top-6 md:right-6 text-white hover:text-zinc-300 p-4 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-sm transition-all"
+            type="button"
+            className="fixed top-4 right-4 md:top-8 md:right-8 text-white hover:text-zinc-300 p-3 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-md transition-all cursor-pointer shadow-lg border border-white/10"
             onClick={(e) => { 
               e.preventDefault();
               e.stopPropagation(); 

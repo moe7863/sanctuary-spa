@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Calendar, User, Clock, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Share2 } from 'lucide-react';
 import { FadeIn } from '../UI/FadeIn';
 
 interface JournalPostProps {

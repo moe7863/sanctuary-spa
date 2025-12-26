@@ -70,7 +70,7 @@ export const Hero: React.FC = () => {
 
         {/* Search Bar Component - Glassmorphic Update */}
         <FadeIn delay={300}>
-          <div className="max-w-3xl mx-auto bg-zinc-900/40 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 flex flex-col md:flex-row items-center gap-2 transition-transform hover:scale-[1.01] duration-300 relative z-20">
+          <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 flex flex-col md:flex-row items-center gap-2 transition-transform hover:scale-[1.01] duration-300 relative z-20">
             
             <div 
               className="flex-1 w-full md:w-auto p-2 hover:bg-white/5 rounded-xl transition-colors cursor-pointer group relative"
