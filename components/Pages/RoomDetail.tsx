@@ -163,39 +163,45 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
 
       {/* Gallery Lightbox */}
       {galleryIndex !== null && (
-        <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center animate-in fade-in duration-300">
           
           <button 
-            className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors p-4 z-50"
+            className="absolute left-0 md:left-8 text-white/50 hover:text-white transition-colors p-6 z-50 h-full flex items-center justify-center"
             onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1)); }}
           >
-            <ChevronLeft className="w-10 h-10" />
+            <ChevronLeft className="w-10 h-10 drop-shadow-lg" />
           </button>
 
-          <img 
-            src={allImages[galleryIndex]} 
-            alt="Gallery view" 
-            className="max-h-[85vh] max-w-[90vw] object-contain rounded-sm shadow-2xl relative z-10"
-            onClick={(e) => e.stopPropagation()} 
-          />
+          <div className="w-full h-full flex items-center justify-center p-0 md:p-12">
+            <img 
+              src={allImages[galleryIndex]} 
+              alt="Gallery view" 
+              className="w-full md:w-auto md:max-w-[90vw] md:max-h-[85vh] h-auto object-contain rounded-sm shadow-2xl relative z-10 select-none"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
 
           <button 
-            className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors p-4 z-50"
+            className="absolute right-0 md:right-8 text-white/50 hover:text-white transition-colors p-6 z-50 h-full flex items-center justify-center"
             onClick={(e) => { e.stopPropagation(); setGalleryIndex(prev => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0)); }}
           >
-            <ChevronRight className="w-10 h-10" />
+            <ChevronRight className="w-10 h-10 drop-shadow-lg" />
           </button>
           
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-400 text-sm tracking-widest z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
             {galleryIndex + 1} / {allImages.length}
           </div>
 
-          {/* Close button moved to end and given high z-index */}
+          {/* Close button - Fixed z-index and positioning */}
           <button 
-            className="absolute top-6 right-6 text-zinc-400 hover:text-white p-2 z-[60]"
-            onClick={(e) => { e.stopPropagation(); setGalleryIndex(null); }}
+            className="absolute top-4 right-4 md:top-6 md:right-6 text-white hover:text-zinc-300 p-4 z-[110] bg-black/20 hover:bg-black/50 rounded-full backdrop-blur-sm transition-all"
+            onClick={(e) => { 
+              e.preventDefault();
+              e.stopPropagation(); 
+              setGalleryIndex(null); 
+            }}
           >
-            <X className="w-8 h-8" />
+            <X className="w-6 h-6 md:w-8 md:h-8" />
           </button>
         </div>
       )}
@@ -203,9 +209,9 @@ export const RoomDetail: React.FC<RoomDetailProps> = ({ room, onBack }) => {
       {/* Booking Modal */}
       {isBookingOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center px-4 animate-in fade-in duration-200">
-          <div className="bg-zinc-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="bg-zinc-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200 max-h-[90vh] overflow-y-auto">
             {/* Modal Header */}
-            <div className="p-6 border-b border-white/5 flex justify-between items-center bg-zinc-950">
+            <div className="p-6 border-b border-white/5 flex justify-between items-center bg-zinc-950 sticky top-0 z-10">
               <h3 className="text-xl font-serif text-white">Complete Reservation</h3>
               <button onClick={() => setIsBookingOpen(false)} className="text-zinc-500 hover:text-white">
                 <X className="w-5 h-5" />

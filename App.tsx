@@ -9,18 +9,23 @@ import { Concierge } from './components/Features/Concierge';
 import { Gallery } from './components/Sections/Gallery';
 import { FadeIn } from './components/UI/FadeIn';
 import { RoomDetail } from './components/Pages/RoomDetail';
+import { JournalPost } from './components/Pages/JournalPost';
 import { OurStory, Dining, Activities, FAQ, Terms, Privacy, Contact } from './components/Pages/StaticPages';
 import { PageView, Room } from './types';
 
 function App() {
   const [currentView, setCurrentView] = useState<PageView>('home');
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+  const [selectedJournalId, setSelectedJournalId] = useState<string | null>(null);
 
   const handleNavigate = (view: PageView) => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     setCurrentView(view);
     if (view !== 'room-detail') {
       setSelectedRoom(null);
+    }
+    if (view !== 'journal-detail') {
+      setSelectedJournalId(null);
     }
   };
 
@@ -29,17 +34,41 @@ function App() {
     handleNavigate('room-detail');
   };
 
+  const handleJournalSelect = (id: string) => {
+    setSelectedJournalId(id);
+    handleNavigate('journal-detail');
+  };
+
+  const handleBackToRooms = () => {
+    setCurrentView('home');
+    setSelectedRoom(null);
+    // Use setTimeout to allow the home page to render before scrolling
+    setTimeout(() => {
+      const roomsSection = document.getElementById('rooms');
+      if (roomsSection) {
+        roomsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     if (currentView === 'room-detail' && !selectedRoom) {
       handleNavigate('home');
     }
-  }, [currentView, selectedRoom]);
+    if (currentView === 'journal-detail' && !selectedJournalId) {
+      handleNavigate('home');
+    }
+  }, [currentView, selectedRoom, selectedJournalId]);
 
   const renderContent = () => {
     switch (currentView) {
       case 'room-detail':
         return selectedRoom ? (
-          <RoomDetail room={selectedRoom} onBack={() => handleNavigate('home')} />
+          <RoomDetail room={selectedRoom} onBack={handleBackToRooms} />
+        ) : null;
+      case 'journal-detail':
+        return selectedJournalId ? (
+          <JournalPost postId={selectedJournalId} onBack={() => handleNavigate('home')} />
         ) : null;
       case 'our-story': return <OurStory />;
       case 'dining': return <Dining />;
@@ -56,7 +85,7 @@ function App() {
             <Gallery />
             <Rooms onRoomSelect={handleRoomSelect} />
             <Amenities />
-            <Testimonial />
+            <Testimonial onSelectJournal={handleJournalSelect} />
             
             {/* CTA Section */}
             <section id="dining" className="py-32 px-6 relative overflow-hidden bg-zinc-950">

@@ -12,7 +12,7 @@ export const Gallery: React.FC = () => {
           <FadeIn className="md:row-span-2 h-[400px] md:h-auto" delay={0}>
             <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="/images/gallery-lounge.avif" 
+                src="/images/gallery-lounge.jpg" 
                 alt="Lounge" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
@@ -39,7 +39,7 @@ export const Gallery: React.FC = () => {
           <FadeIn className="md:col-span-2 h-[300px] md:h-auto" delay={100}>
              <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="/images/gallery-park.avif" 
+                src="/images/gallery-park.jpg" 
                 alt="Park" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -74,7 +74,7 @@ export const Gallery: React.FC = () => {
           <FadeIn className="h-[250px] md:h-auto" delay={300}>
              <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="/images/gallery-wine.avif" 
+                src="/images/gallery-wine.jpg" 
                 alt="Wine" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

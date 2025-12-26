@@ -1,25 +1,33 @@
 import React from 'react';
 import { Quote, ArrowRight, Calendar } from 'lucide-react';
 import { FadeIn } from '../UI/FadeIn';
+import { JournalEntry } from '../../types';
 
-export const Testimonial: React.FC = () => {
-  const journalEntries = [
+interface TestimonialProps {
+  onSelectJournal: (id: string) => void;
+}
+
+export const Testimonial: React.FC<TestimonialProps> = ({ onSelectJournal }) => {
+  const journalEntries: JournalEntry[] = [
     {
+      id: "forest-bathing",
       title: "The Art of Forest Bathing",
       date: "Oct 12",
-      image: "/images/journal-forest.avif",
+      image: "/images/journal-forest.jpg",
       excerpt: "Why reconnecting with the silence of the woods is the ultimate luxury."
     },
     {
+      id: "autumn-menu",
       title: "Autumn Menu Preview",
       date: "Oct 08",
-      image: "/images/journal-food.avif",
+      image: "/images/journal-food.jpg",
       excerpt: "Head Chef James shares his inspiration for this season's foraging."
     },
     {
+      id: "fells-guide",
       title: "A Guide to the Fells",
       date: "Sep 24",
-      image: "/images/journal-hike.avif",
+      image: "/images/journal-hike.jpg",
       excerpt: "Our favorite circular walks starting directly from the Sanctuary doorstep."
     }
   ];
@@ -31,7 +39,7 @@ export const Testimonial: React.FC = () => {
       <div className="relative mb-24">
         <div className="absolute inset-0 z-0">
              <img 
-            src="/images/testimonial-bg.avif" 
+            src="/images/testimonial-bg.jpg" 
             className="w-full h-[600px] object-cover opacity-20 blur-[2px]" 
             alt="Nature Background" 
             loading="lazy"
@@ -77,7 +85,10 @@ export const Testimonial: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {journalEntries.map((entry, idx) => (
             <FadeIn key={idx} delay={idx * 100}>
-              <div className="group cursor-pointer">
+              <div 
+                className="group cursor-pointer"
+                onClick={() => onSelectJournal(entry.id)}
+              >
                 <div className="aspect-[3/2] rounded-2xl overflow-hidden mb-6 relative">
                    <img 
                     src={entry.image} 

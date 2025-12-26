@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Room {
   id: string;
   name: string;
@@ -31,6 +33,7 @@ export interface ChatMessage {
 export type PageView = 
   | 'home' 
   | 'room-detail' 
+  | 'journal-detail'
   | 'our-story' 
   | 'dining' 
   | 'activities' 
@@ -38,3 +41,12 @@ export type PageView =
   | 'terms' 
   | 'privacy' 
   | 'contact';
+
+export interface JournalEntry {
+  id: string;
+  title: string;
+  date: string;
+  image: string;
+  excerpt: string;
+  content?: React.ReactNode;
+}

@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/hero-bg.avif" 
+          src="/images/hero-bg.jpg" 
           alt="Sanctuary Exterior" 
           className="w-full h-full object-cover opacity-60 scale-105 animate-[pulse_10s_ease-in-out_infinite_alternate]"
         />
@@ -68,12 +68,12 @@ export const Hero: React.FC = () => {
           </p>
         </FadeIn>
 
-        {/* Search Bar Component */}
+        {/* Search Bar Component - Glassmorphic Update */}
         <FadeIn delay={300}>
-          <div className="max-w-3xl mx-auto bg-zinc-900 rounded-2xl shadow-2xl border border-white/5 p-2 flex flex-col md:flex-row items-center gap-2 transition-transform hover:scale-[1.01] duration-300 relative z-20">
+          <div className="max-w-3xl mx-auto bg-zinc-900/40 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 p-2 flex flex-col md:flex-row items-center gap-2 transition-transform hover:scale-[1.01] duration-300 relative z-20">
             
             <div 
-              className="flex-1 w-full md:w-auto p-2 hover:bg-zinc-800 rounded-xl transition-colors cursor-pointer group relative"
+              className="flex-1 w-full md:w-auto p-2 hover:bg-white/5 rounded-xl transition-colors cursor-pointer group relative"
               onClick={() => {
                 try {
                   checkInRef.current?.showPicker();
@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
                 }
               }}
             >
-              <label className="block text-xs font-medium text-zinc-500 mb-1 ml-1 group-hover:text-zinc-400">Check In</label>
+              <label className="block text-xs font-medium text-zinc-400 mb-1 ml-1 group-hover:text-zinc-300">Check In</label>
               <div className="flex items-center gap-2 text-sm font-medium text-white px-1 relative z-10">
                 <Calendar className="w-4 h-4 text-zinc-400 group-hover:text-zinc-300 transition-colors pointer-events-none" />
                 <span>{checkIn || 'Add Date'}</span>
@@ -96,10 +96,10 @@ export const Hero: React.FC = () => {
               />
             </div>
 
-            <div className="w-px h-8 bg-zinc-800 hidden md:block"></div>
+            <div className="w-px h-8 bg-white/10 hidden md:block"></div>
 
             <div 
-              className="flex-1 w-full md:w-auto p-2 hover:bg-zinc-800 rounded-xl transition-colors cursor-pointer group relative"
+              className="flex-1 w-full md:w-auto p-2 hover:bg-white/5 rounded-xl transition-colors cursor-pointer group relative"
               onClick={() => {
                 try {
                   checkOutRef.current?.showPicker();
@@ -108,7 +108,7 @@ export const Hero: React.FC = () => {
                 }
               }}
             >
-              <label className="block text-xs font-medium text-zinc-500 mb-1 ml-1 group-hover:text-zinc-400">Check Out</label>
+              <label className="block text-xs font-medium text-zinc-400 mb-1 ml-1 group-hover:text-zinc-300">Check Out</label>
               <div className="flex items-center gap-2 text-sm font-medium text-white px-1 relative z-10">
                 <Calendar className="w-4 h-4 text-zinc-400 group-hover:text-zinc-300 transition-colors pointer-events-none" />
                 <span>{checkOut || 'Add Date'}</span>
@@ -122,10 +122,10 @@ export const Hero: React.FC = () => {
               />
             </div>
 
-            <div className="w-px h-8 bg-zinc-800 hidden md:block"></div>
+            <div className="w-px h-8 bg-white/10 hidden md:block"></div>
 
-            <div className="flex-1 w-full md:w-auto p-2 hover:bg-zinc-800 rounded-xl transition-colors cursor-pointer group relative">
-              <label className="block text-xs font-medium text-zinc-500 mb-1 ml-1 group-hover:text-zinc-400">Guests</label>
+            <div className="flex-1 w-full md:w-auto p-2 hover:bg-white/5 rounded-xl transition-colors cursor-pointer group relative">
+              <label className="block text-xs font-medium text-zinc-400 mb-1 ml-1 group-hover:text-zinc-300">Guests</label>
               <div className="flex items-center gap-2 text-sm font-medium text-white px-1 relative z-10">
                 <Users className="w-4 h-4 text-zinc-400 group-hover:text-zinc-300 transition-colors pointer-events-none" />
                 <span>{guests} Adults</span>
