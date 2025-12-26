@@ -12,8 +12,9 @@ export const Gallery: React.FC = () => {
           <FadeIn className="md:row-span-2 h-[400px] md:h-auto" delay={0}>
             <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1000&auto=format&fit=crop" 
+                src="/images/gallery-lounge.avif" 
                 alt="Lounge" 
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
@@ -38,8 +39,9 @@ export const Gallery: React.FC = () => {
           <FadeIn className="md:col-span-2 h-[300px] md:h-auto" delay={100}>
              <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200&auto=format&fit=crop" 
+                src="/images/gallery-park.avif" 
                 alt="Park" 
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-black/60 to-transparent"></div>
@@ -72,8 +74,9 @@ export const Gallery: React.FC = () => {
           <FadeIn className="h-[250px] md:h-auto" delay={300}>
              <div className="relative w-full h-full rounded-[32px] overflow-hidden group">
               <img 
-                src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=600&auto=format&fit=crop" 
+                src="/images/gallery-wine.avif" 
                 alt="Wine" 
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>

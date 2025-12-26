@@ -19,9 +19,10 @@ export const Amenities: React.FC = () => {
           <FadeIn className="md:col-span-2 md:row-span-2 h-[400px] md:h-auto" delay={100}>
             <div className="w-full h-full bg-zinc-900 rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 transition-all duration-500">
               <img 
-                src="https://images.unsplash.com/photo-1466978913421-dad9386616f6?q=80&w=800&auto=format&fit=crop" 
+                src="/images/amenity-farm.avif" 
                 className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-700 z-0 scale-110 group-hover:scale-100" 
                 alt="Food" 
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-zinc-950/60 group-hover:bg-zinc-950/40 transition-colors z-0 duration-500"></div>
               
@@ -47,9 +48,10 @@ export const Amenities: React.FC = () => {
           <FadeIn className="md:col-span-2 h-[300px] md:h-auto" delay={200}>
             <div className="w-full h-full bg-zinc-900 text-white rounded-3xl p-8 relative overflow-hidden group border border-white/5 hover:border-white/10 transition-all duration-500">
               <img 
-                src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" 
+                src="/images/amenity-spa.avif" 
                 className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" 
                 alt="Spa" 
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/50 to-transparent z-0"></div>
               
