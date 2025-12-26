@@ -7,19 +7,19 @@ export const Testimonial: React.FC = () => {
     {
       title: "The Art of Forest Bathing",
       date: "Oct 12",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop",
+      image: "/images/journal-forest.avif",
       excerpt: "Why reconnecting with the silence of the woods is the ultimate luxury."
     },
     {
       title: "Autumn Menu Preview",
       date: "Oct 08",
-      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+      image: "/images/journal-food.avif",
       excerpt: "Head Chef James shares his inspiration for this season's foraging."
     },
     {
       title: "A Guide to the Fells",
       date: "Sep 24",
-      image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop",
+      image: "/images/journal-hike.avif",
       excerpt: "Our favorite circular walks starting directly from the Sanctuary doorstep."
     }
   ];
@@ -31,9 +31,10 @@ export const Testimonial: React.FC = () => {
       <div className="relative mb-24">
         <div className="absolute inset-0 z-0">
              <img 
-            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2070&auto=format&fit=crop" 
+            src="/images/testimonial-bg.avif" 
             className="w-full h-[600px] object-cover opacity-20 blur-[2px]" 
             alt="Nature Background" 
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/80 to-zinc-950"></div>
         </div>
@@ -82,6 +83,7 @@ export const Testimonial: React.FC = () => {
                     src={entry.image} 
                     alt={entry.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" 
+                    loading="lazy"
                   />
                   <div className="absolute top-4 left-4 bg-zinc-950/80 backdrop-blur-md px-3 py-1 rounded-md border border-white/10 flex items-center gap-2 text-[10px] font-medium text-zinc-300">
                     <Calendar className="w-3 h-3" />

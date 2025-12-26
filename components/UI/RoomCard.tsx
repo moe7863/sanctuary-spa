@@ -29,6 +29,7 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room, onClick }) => {
         <img 
           src={room.image} 
           alt={room.name} 
+          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
         />
         <div className="absolute top-4 right-4 bg-zinc-950/80 backdrop-blur-md text-xs font-semibold px-3 py-1.5 rounded-md border border-white/10 text-white shadow-sm">
